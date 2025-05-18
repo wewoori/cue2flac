@@ -23,8 +23,70 @@
 - ✅ WAV 찌꺼기 자동 정리
 
 ---
+🧪 사용 방법
+
+./split_flac.sh
+실행하면 다음과 같은 흐름으로 작동합니다:
+
+현재 디렉토리에 있는 .cue 파일을 자동 검색하여 목록 표시
+
+번호를 선택해 .cue 파일을 고름
+
+자동으로 해당 .flac 파일과 매칭
+
+출력 형식 선택 메뉴 표시 (FLAC, MP3, OGG, WAV, 사용자 정의)
+
+음질 또는 옵션 지정 (사용자 정의인 경우)
+
+shnsplit을 통해 트랙 분할 (WAV)
+
+선택된 형식으로 ffmpeg 변환
+
+cuetag으로 태그 삽입
+
+결과는 앨범명_포맷 폴더에 저장
+
+📁 출력 예시
+복사
+편집
+앨범명.cue
+앨범명.flac
+├── 앨범명_mp3/
+│   ├── 01 - Track 1.mp3
+│   ├── 02 - Track 2.mp3
+│   └── ...
+
 
 ## 🔧 필요한 패키지 (Debian/Ubuntu 기준)
 
-```bash
-sudo apt install cuetools shntool ffmpeg vorbis-tools flac
+sudo apt update
+sudo apt install shntool cuetools ffmpeg flac
+
+설치 설명:
+
+shntool – 트랙 분할용 shnsplit 명령어 포함
+
+cuetools – cue 파일로 태그 추출 및 삽입
+
+ffmpeg – 포맷 변환 엔진
+
+flac – FLAC 디코딩용 필수 패키지
+
+💡 참고 사항
+.cue 파일이 UTF-8이 아닐 경우 자동으로 인코딩을 감지하고 변환 (iconv 필요)
+
+기존 .wav 파일이 있으면 자동 삭제하여 덮어쓰기 방지
+
+확장자나 공백·특수문자 문제 전부 처리됨
+
+출력은 항상 별도 폴더로 구분되어 원본과 충돌 없음
+
+🧙 제작자
+🔧 Shell Script: wewoori
+
+🎶 기획 및 품질 보증: 형님 본인 😎
+
+📄 라이선스
+MIT License — 자유롭게 사용, 수정, 배포 가능합니다. 단 상업적인 용도의 모든 방식은 거절합니다.
+
+
